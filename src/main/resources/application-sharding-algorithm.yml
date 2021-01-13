@@ -1,0 +1,37 @@
+####################
+# 水平分表
+####################
+spring:
+  shardingsphere:
+    #====================
+    #（★）数据源
+    #====================
+    datasource:
+      names: ds
+      ds:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
+        username: root
+        password: root
+    #====================
+    #（★）分表
+    #====================
+    sharding:
+      #配置表
+      tables:
+        user_base:
+          logic-table: user_base
+          actual-data-nodes: ds.user_base_$->{2019..2020}_$->{0..1}
+          table-strategy:
+            complex:
+              sharding-columns: ub_id,ub_user_id
+              algorithm-class-name: CstmComplexShardingAlgorithm
+      #            #Hint分片
+      #            hint:
+      #             algorithm-class-name: 12312
+    #====================
+    #（★）属性
+    #====================
+    props:
+      sql.show: true

@@ -1,0 +1,44 @@
+####################
+# 水平分库
+####################
+spring:
+  shardingsphere:
+    #====================
+    #（★）数据源
+    #====================
+    datasource:
+      names: ds0,ds1
+      ds0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
+        username: root
+        password: root
+      ds1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3307/ds_sharding_1
+        username: root
+        password: root
+    #====================
+    #（★）分库
+    #====================
+    sharding:
+      tables:
+        user_base:
+          logic-table: user_base
+          #真实数据节点
+          actual-data-nodes: ds$->{0..1}.user_base
+          #分库策略
+          database-strategy:
+            #行表达式分片
+            inline:
+              sharding-column: ub_user_id
+              algorithm-expression: ds$->{ub_user_id % 2}
+#            #单分片键的标准分片
+#            standard:
+#              sharding-column: ub_user_id
+#              precise-algorithm-class-name: CstmPreciseShardingAlgorithm
+#              range-algorithm-class-name: CstmRangeShardingAlgorithm
+      binding-tables:
+        - user_base

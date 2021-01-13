@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseMapper">
+    <resultMap id="Base_Result_Map" type="study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseEO">
+        <result property="ubId" column="ub_id"/>
+        <result property="ubUserId" column="ub_user_id"/>
+        <result property="ubLoginName" column="ub_login_name"/>
+        <result property="ubLoginPwd" column="ub_login_pwd"/>
+        <result property="ubBeginTime" column="ub_begin_time"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ub.ub_id,
+        ub.ub_user_id,
+        ub.ub_login_name,
+        ub.ub_login_pwd,
+        ub.ub_login_pwd
+    </sql>
+
+    <insert id="insert" parameterType="UserBaseEO" useGeneratedKeys="true" keyProperty="ubId">
+        insert into user_base (ub_user_id, ub_login_name, ub_login_pwd, ub_begin_time)
+        values (#{ubUserId}, #{ubLoginName}, #{ubLoginPwd}, #{ubBeginTime})
+    </insert>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="Base_Result_Map">
+        select
+        <include refid="Base_Column_List"/>
+        from user_base ub
+        where ub.ub_id = #{ubId}
+    </select>
+
+    <select id="getByUserId" parameterType="java.lang.Long" resultMap="Base_Result_Map">
+        select
+        <include refid="Base_Column_List"/>
+        from user_base ub
+        where UB.ub_user_id = #{ubUserId}
+    </select>
+
+    <select id="getByUserIdAndUbId" resultMap="Base_Result_Map">
+        select
+        <include refid="Base_Column_List"/>
+        from user_base ub
+        where ub.ub_user_id = #{ubUserId}
+        <if test="ubId != null">
+            and ub.ub_id = #{ubId}
+        </if>
+    </select>
+
+    <select id="getByUserIdAndBeginTime" resultMap="Base_Result_Map">
+        select
+        <include refid="Base_Column_List"/>
+        from user_base ub
+        where ub.ub_user_id = #{ubUserId}
+        and LEFT(ub.ub_begin_time, 10) = LEFT(#{ubBeginTime}, 10)
+    </select>
+</mapper>

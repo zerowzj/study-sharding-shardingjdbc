@@ -1,0 +1,44 @@
+####################
+# 读写分离
+####################
+spring:
+  shardingsphere:
+    #（★）数据源定义
+    datasource:
+      #数据源命名，不能为空！
+      names: ds-master,ds-slave0,ds-slave1
+      #（▲）物理数据源
+      #名称必须符合yml的key规则，使用 驼峰 或 -分隔符！
+      ds-master:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/ds_ms
+        username: root
+        password: root
+      ds-slave0:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/ds_ms
+        username: root
+        password: root
+      ds-slave1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/ds_ms
+        username: root
+        password: root
+    #（★）主从定义
+    masterslave:
+      #逻辑数据源
+      name: ds_ms
+      #主数据源
+      master-data-source-name: ds-master
+      #从数据源
+      slave-data-source-names:
+        - ds-slave0
+        - ds-slave1
+      #负载均衡
+      load-balance-algorithm-type: round_robin
+    #（★）属性
+    props:
+       slq.show: true

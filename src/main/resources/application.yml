@@ -1,0 +1,21 @@
+#
+logging:
+  config: classpath:logback.xml
+#
+spring:
+  application:
+    name: study-springboot-shardingjdbc
+  main:
+    web-application-type: none
+    banner-mode: off
+  #
+  profiles:
+    active: ms
+#    active: sharding-db
+#    active: sharding-table
+#    active: sharding-db-table
+#    active: sharding-algorithm
+#
+mybatis:
+  mapper-locations: study/sharding/springboot/shardingjdbc/dao/**/**.xml
+  type-aliases-package: study.sharding.springboot.shardingjdbc.dao
