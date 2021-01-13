@@ -19,6 +19,15 @@ public class MasterSlaveTest {
     private UserService userService;
 
     @Test
+    public void insert_test() {
+        UserBaseEO ubEO = new UserBaseEO();
+        ubEO.setUbLoginName("test");
+        ubEO.setUbLoginPwd("test");
+        ubEO.setUbUserId(900001L);
+        userService.add(ubEO);
+    }
+
+    @Test
     public void get_test() {
         Long ubId = 4L;
         for (int i = 0; i < 3; i++) {

@@ -30,7 +30,7 @@ spring:
     #（★）主从定义
     masterslave:
       #逻辑数据源名称
-      #      name: ds_ms_ms_ms
+      #name: ds_ms_ms_ms
       #主数据源
       master-data-source-name: ds-master
       #从数据源
