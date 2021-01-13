@@ -1,11 +1,9 @@
-####################
+#********************
 # 水平分表
-####################
+#********************
 spring:
   shardingsphere:
-    #====================
-    #（★）数据源
-    #====================
+    #（★）数据源定义
     datasource:
       names: ds
       ds:
@@ -14,9 +12,7 @@ spring:
         url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
         username: root
         password: root
-    #====================
     #（★）分表
-    #====================
     sharding:
       #配置表
       tables:
@@ -45,8 +41,6 @@ spring:
       #绑定表
       binding-tables:
         - user_base
-    #====================
     #（★）属性
-    #====================
     props:
       sql.show: true

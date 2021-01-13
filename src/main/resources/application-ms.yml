@@ -1,6 +1,6 @@
-####################
+#********************
 # 读写分离
-####################
+#********************
 spring:
   shardingsphere:
     #（★）数据源定义
@@ -29,8 +29,8 @@ spring:
         password: root
     #（★）主从定义
     masterslave:
-      #逻辑数据源
-      name: ds_ms
+      #逻辑数据源名称
+      #      name: ds_ms_ms_ms
       #主数据源
       master-data-source-name: ds-master
       #从数据源
