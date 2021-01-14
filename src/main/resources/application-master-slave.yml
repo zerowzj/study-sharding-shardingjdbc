@@ -5,7 +5,7 @@ spring:
   shardingsphere:
     #（★）>>>>>> 数据源定义 <<<<<<
     datasource:
-      #数据源命名，不能为空！
+      #数据源命名，不能为空！！！
       names: ds-master,ds-slave0,ds-slave1
       #（▲）物理数据源
       #名称必须符合yml的key规则，使用 驼峰 或 -分隔符！
@@ -29,7 +29,7 @@ spring:
         password: root
     #（★）>>>>>> 主从定义 <<<<<<
     masterslave:
-      #逻辑数据源名称
+      #逻辑数据源名称，为空时不执行读写分离！！！
       name: ds_ms
       #主数据源
       master-data-source-name: ds-master
@@ -37,8 +37,11 @@ spring:
       slave-data-source-names:
         - ds-slave0
         - ds-slave1
-      #负载均衡
+      #负载均衡，round_robin/random
       load-balance-algorithm-type: round_robin
     #（★）属性
     props:
-       sql.show: true
+      #日志内容包含：逻辑 SQL，真实 SQL 和 SQL 解析结果
+      sql.show: true
+      #打印简单风格的 SQL
+      sql.simple: true
