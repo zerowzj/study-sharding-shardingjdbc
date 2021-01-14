@@ -3,7 +3,7 @@
 #********************
 spring:
   shardingsphere:
-    #（★）数据源定义
+    #（★）>>>>>> 数据源定义 <<<<<<
     datasource:
       #数据源命名，不能为空！
       names: ds-master,ds-slave0,ds-slave1
@@ -27,10 +27,10 @@ spring:
         url: jdbc:mysql://127.0.0.1:3306/ds_ms
         username: root
         password: root
-    #（★）主从定义
+    #（★）>>>>>> 主从定义 <<<<<<
     masterslave:
       #逻辑数据源名称
-      #name: ds_ms_ms_ms
+      name: ds_ms
       #主数据源
       master-data-source-name: ds-master
       #从数据源
@@ -41,4 +41,4 @@ spring:
       load-balance-algorithm-type: round_robin
     #（★）属性
     props:
-       slq.show: true
+       sql.show: true
