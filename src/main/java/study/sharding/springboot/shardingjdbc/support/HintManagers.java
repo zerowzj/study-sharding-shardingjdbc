@@ -11,6 +11,7 @@ public class HintManagers {
     public static void setMasterRouteOnly() {
         get().setMasterRouteOnly();
     }
+
 //
 //    public static void setDatabaseShardingValue(Comparable<?> value) {
 //        get().setDatabaseShardingValue(value);
