@@ -22,7 +22,7 @@ spring:
           logic-table: user_base
           actual-data-nodes: ds-sharding.user_base_$->{0..1}
           table-strategy:
-            #（▲）标准分片策略
+            #（★）标准分片策略
             standard:
               sharding-column: ub_user_id
               precise-algorithm-class-name: study.sharding.springboot.shardingjdbc.support.algorithm.CustomPreciseShardingAlgorithm

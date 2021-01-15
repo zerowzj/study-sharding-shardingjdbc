@@ -13,6 +13,9 @@ spring:
 #    active: master-slave
 #    active: sharding-table
     active: sharding-strategy-standard
+#    active: sharding-strategy-complex
+#    active: sharding-db
+#    active: sharding-db-table
 #
 mybatis:
   mapper-locations: study/sharding/springboot/shardingjdbc/dao/**/**.xml

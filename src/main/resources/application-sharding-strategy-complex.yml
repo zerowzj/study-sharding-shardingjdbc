@@ -21,7 +21,7 @@ spring:
           logic-table: user_base
           actual-data-nodes: ds-sharding.user_base_$->{2019..2020}_$->{0..1}
           table-strategy:
-            #（▲）复合分片策略
+            #（★）复合分片策略
             complex:
               sharding-columns: ub_id,ub_user_id
               algorithm-class-name: study.sharding.springboot.shardingjdbc.support.algorithm.CustomComplexShardingAlgorithm
