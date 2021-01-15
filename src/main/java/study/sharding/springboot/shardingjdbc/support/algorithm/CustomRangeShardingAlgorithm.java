@@ -10,7 +10,7 @@ import java.util.Collection;
  * 范围分片
  */
 @Slf4j
-public class CstmRangeShardingAlgorithm implements RangeShardingAlgorithm {
+public class CustomRangeShardingAlgorithm implements RangeShardingAlgorithm {
 
     @Override
     public Collection<String> doSharding(Collection availableTargetNames,

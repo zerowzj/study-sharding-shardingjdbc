@@ -1,0 +1,32 @@
+#********************
+# 标准分片策略
+#（1）标准分片策略，提供对SQL语句中的=, IN和BETWEEN AND的分片操作支持
+#（2）只支持单分片键，提供PreciseShardingAlgorithm和RangeShardingAlgorithm两个分片算法
+#（3）PreciseShardingAlgorithm是必选的，用于处理=和IN的分片
+#（4）RangeShardingAlgorithm是可选的，用于处理BETWEEN AND分片，如果不配置RangeShardingAlgorithm，
+#    SQL中的BETWEEN AND将按照全库路由处理
+#********************
+spring:
+  shardingsphere:
+    datasource:
+      names: ds-sharding
+      ds-sharding:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
+        username: root
+        password: root
+    sharding:
+      tables:
+        user_base:
+          logic-table: user_base
+          actual-data-nodes: ds-sharding.user_base_$->{0..1}
+          table-strategy:
+            #（▲）标准分片策略
+            standard:
+              sharding-column: ub_user_id
+              precise-algorithm-class-name: study.sharding.springboot.shardingjdbc.support.algorithm.CustomPreciseShardingAlgorithm
+              range-algorithm-class-name: study.sharding.springboot.shardingjdbc.support.algorithm.CustomRangeShardingAlgorithm
+    props:
+      sql.show: false
+      sql.simple: true

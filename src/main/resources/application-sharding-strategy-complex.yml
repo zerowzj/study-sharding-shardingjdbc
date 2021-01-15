@@ -1,0 +1,32 @@
+#********************
+# 复合分片策略
+#（1）复合分片策略。提供对SQL语句中的=, IN和BETWEEN AND的分片操作支持
+#（2）ComplexShardingStrategy支持多分片键，由于多分片键之间的关系复杂，
+#    因此Sharding-JDBC并未做过多的封装，而是直接将分片键值组合以及分片操作符交于算法接口，
+#    完全由应用开发者实现，提供最大的灵活度
+#********************
+spring:
+  shardingsphere:
+    datasource:
+      names: ds-sharding
+      ds-sharding:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
+        username: root
+        password: root
+    sharding:
+      tables:
+        user_base:
+          logic-table: user_base
+          actual-data-nodes: ds-sharding.user_base_$->{2019..2020}_$->{0..1}
+          table-strategy:
+            #（▲）复合分片策略
+            complex:
+              sharding-columns: ub_id,ub_user_id
+              algorithm-class-name: CstmComplexShardingAlgorithm
+    #====================
+    #（★）属性
+    #====================
+    props:
+      sql.show: true

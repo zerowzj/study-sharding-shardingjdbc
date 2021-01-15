@@ -13,25 +13,28 @@ spring:
         password: root
     #（★）分表
     sharding:
-      #配置表
+      #（▲）表定义
       tables:
         #（※）命名需要和表名一致！
         user_base:
-          #1-逻辑表
+          #（1）逻辑表
           logic-table: user_base
-          #2-实际数据节点
+          #（2）实际数据节点
           #数据源名+表名组成，以小数点分隔；多个表以逗号分隔；支持inline表达式
           actual-data-nodes: ds-sharding.user_base_$->{0..1}
-          #3-分表策略
+          #（3）分表策略
           table-strategy:
-            #行表达式分片
             inline:
               sharding-column: ub_user_id
               algorithm-expression: user_base_$->{ub_user_id % 2}
-      #绑定表
+      #（▲）表绑定
       binding-tables:
         - user_base
-    #（★）属性
+      #（▲）广播表
+      broadcast-tables:
+        - user_base
+        #（▲）广播表
+      master-slave-rules:
     props:
       sql.show: false
       sql.simple: true
