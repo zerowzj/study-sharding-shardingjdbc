@@ -3,33 +3,32 @@
 #********************
 spring:
   shardingsphere:
-    #（★）>>>>>> 数据源定义 <<<<<<
+    #（★）数据源定义
     datasource:
-      #数据源命名，不能为空！！！
+      #（※）数据源命名，不能为空！！！
       names: ds-master,ds-slave0,ds-slave1
-      #（▲）物理数据源
-      #名称必须符合yml的key规则，使用 驼峰 或 -分隔符！
+      #物理数据源，名称必须符合yml的key规则，使用 驼峰 或 -分隔符！
       ds-master:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/ds_ms
+        url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
         username: root
         password: root
       ds-slave0:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/ds_ms
+        url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
         username: root
         password: root
       ds-slave1:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/ds_ms
+        url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
         username: root
         password: root
-    #（★）>>>>>> 主从定义 <<<<<<
+    #（★）主从定义
     masterslave:
-      #逻辑数据源名称，为空时不执行读写分离！！！
+      #（※）逻辑数据源名称，为空时不执行读写分离！！！
       name: ds_ms
       #主数据源
       master-data-source-name: ds-master

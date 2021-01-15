@@ -12,8 +12,6 @@ spring:
   profiles:
 #    active: master-slave
     active: sharding-table
-#    active: sharding-db
-#    active: sharding-db-table
 #    active: sharding-algorithm
 #
 mybatis:

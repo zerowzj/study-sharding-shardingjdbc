@@ -3,10 +3,9 @@
 #********************
 spring:
   shardingsphere:
-    #（★）数据源定义
     datasource:
-      names: ds
-      ds:
+      names: ds-sharding
+      ds-sharding:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.jdbc.Driver
         url: jdbc:mysql://127.0.0.1:3306/ds_sharding_0
@@ -19,7 +18,8 @@ spring:
         #（※）命名需要和表名一致！
         user_base:
           logic-table: user_base
-          #真实数据节点，数据源名+表名组成，以小数点分隔；多个表以逗号分隔；支持inline表达式
+          #真实数据节点
+          #数据源名+表名组成，以小数点分隔；多个表以逗号分隔；支持inline表达式
           actual-data-nodes: ds.user_base_$->{0..1}
           #分表策略
           table-strategy:
@@ -27,16 +27,6 @@ spring:
             inline:
               sharding-column: ub_user_id
               algorithm-expression: user_base_$->{ub_user_id % 2}
-            #单分片键的标准分片
-#            standard:
-#              sharding-column: ub_user_id
-#              precise-algorithm-class-name: CstmPreciseShardingAlgorithm
-      user_admin:
-        loginc-table: user_admin
-        actual-data-nodes: ds.user_admin_$->{0..1}
-        inline:
-          sharing-column: ua_user_id
-          algorithm-expression: user_admin_$->{ua_user_id % 2}
       #绑定表
       binding-tables:
         - user_base
