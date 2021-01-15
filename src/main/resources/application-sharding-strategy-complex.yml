@@ -24,9 +24,7 @@ spring:
             #（▲）复合分片策略
             complex:
               sharding-columns: ub_id,ub_user_id
-              algorithm-class-name: CstmComplexShardingAlgorithm
-    #====================
-    #（★）属性
-    #====================
+              algorithm-class-name: study.sharding.springboot.shardingjdbc.support.algorithm.CustomComplexShardingAlgorithm
     props:
-      sql.show: true
+      sql.show: false
+      sql.simple: true

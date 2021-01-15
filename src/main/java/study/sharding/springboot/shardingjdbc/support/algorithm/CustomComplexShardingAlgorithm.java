@@ -11,14 +11,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 复合键分片
+ * 复合键分片算法
  */
 @Slf4j
-public class CstmComplexShardingAlgorithm implements ComplexKeysShardingAlgorithm<String> {
+public class CustomComplexShardingAlgorithm implements ComplexKeysShardingAlgorithm<String> {
 
     @Override
-    public Collection<String> doSharding(Collection<String> targetNames, ComplexKeysShardingValue<String> shardingValue) {
-        //（★）目标名
+    public Collection<String> doSharding(Collection<String> targetNames,
+                                         ComplexKeysShardingValue<String> shardingValue) {
         log.info("target= [{}]", Joiner.on(",").join(targetNames));
         //（★）分片信息：分片表、
         String logicTableName = shardingValue.getLogicTableName();

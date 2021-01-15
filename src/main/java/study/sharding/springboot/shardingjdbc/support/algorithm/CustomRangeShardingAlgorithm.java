@@ -7,7 +7,7 @@ import org.apache.shardingsphere.api.sharding.standard.RangeShardingValue;
 import java.util.Collection;
 
 /**
- * 范围分片
+ * 范围分片算法
  */
 @Slf4j
 public class CustomRangeShardingAlgorithm implements RangeShardingAlgorithm {
