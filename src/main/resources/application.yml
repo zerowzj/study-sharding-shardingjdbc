@@ -10,9 +10,7 @@ spring:
     banner-mode: off
   #
   profiles:
-#    active: master-slave
-    active: sharding-table
-#    active: sharding-algorithm
+    active: @env@
 #
 mybatis:
   mapper-locations: study/sharding/springboot/shardingjdbc/dao/**/**.xml

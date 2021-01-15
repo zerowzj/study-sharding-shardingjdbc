@@ -97,4 +97,28 @@
             </resource>
         </resources>
     </build>
+
+    <profiles>
+        <profile>
+            <id>master-slave</id>
+            <properties>
+                <env>master-slave</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>sharding-table</id>
+            <properties>
+                <env>sharding-table</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>sharding-algorithm</id>
+            <properties>
+                <env>sharding-algorithm</env>
+            </properties>
+        </profile>
+    </profiles>
 </project>

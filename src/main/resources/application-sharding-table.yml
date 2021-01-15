@@ -20,7 +20,7 @@ spring:
           logic-table: user_base
           #真实数据节点
           #数据源名+表名组成，以小数点分隔；多个表以逗号分隔；支持inline表达式
-          actual-data-nodes: ds.user_base_$->{0..1}
+          actual-data-nodes: ds-sharding.user_base_$->{0..1}
           #分表策略
           table-strategy:
             #行表达式分片
