@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.sharding.springboot.shardingjdbc.dao.useradmin.UserAdminMapper">
+    <resultMap id="Base_Result_Map" type="study.sharding.springboot.shardingjdbc.dao.useradmin.UserAdminEO"
+               extends="study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseMapper.Base_Result_Map">
+        <result property="uaId" column="ua_id"/>
+        <result property="uaUbId" column="ua_ub_id"/>
+        <result property="uaUserId" column="ua_user_id"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ua.ua_id,
+        ua.ua_ub_id,
+        ua.ua_user_id
+    </sql>
+
+    <insert id="insert" parameterType="UserBaseEO">
+        insert into user_admin (ua_id, ua_ub_id, ua_user_id)
+        value (#{uaId}, #{uaUbId}, #{uaUserId})
+    </insert>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="Base_Result_Map">
+        select
+        <include refid="Base_Column_List"/>,
+        <include refid="study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseMapper.Base_Column_List"/>
+        from user_admin ua
+        inner join user_base ub on ua.ua_ub_id = ub.ub_id
+        where ub.ub_id = #{ubId}
+    </select>
+
+    <select id="getByUserId" parameterType="java.lang.Long" resultMap="Base_Result_Map">
+        select
+        <include refid="Base_Column_List"/>,
+        <include refid="study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseMapper.Base_Column_List"/>
+        from user_admin ua
+        inner join user_base ub on ua.ua_ub_id = ub.ub_id
+        where ub.ub_id = #{ubId}
+    </select>
+</mapper>
