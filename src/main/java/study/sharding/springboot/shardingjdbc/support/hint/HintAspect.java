@@ -19,6 +19,7 @@ public class HintAspect {
         Signature signature = joinPoint.getSignature();
         signature.toLongString();
         signature.toString();
+
         String shortName = signature.toShortString();
         try {
             log.info("[{}] master route", shortName);
