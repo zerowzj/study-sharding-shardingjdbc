@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseEO;
 import study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseMapper;
+import study.sharding.springboot.shardingjdbc.support.hint.Master;
 
 import java.util.Date;
 
@@ -20,6 +21,7 @@ public class UserServiceImpl implements UserService {
         return userBaseMapper.insert(ubEO);
     }
 
+    @Master
     @Override
     public UserBaseEO get(Long ubId) {
         return userBaseMapper.get(ubId);

@@ -35,4 +35,11 @@ public class MasterSlaveTest {
             log.info("第 {} 次查询，>>>>> {}", (i + 1), ubEO);
         }
     }
+
+    @Test
+    public void getByMaster_test() {
+        Long ubId = 3L;
+        UserBaseEO ubEO = userService.get(ubId);
+        log.info(">>>>> {}", ubEO);
+    }
 }
