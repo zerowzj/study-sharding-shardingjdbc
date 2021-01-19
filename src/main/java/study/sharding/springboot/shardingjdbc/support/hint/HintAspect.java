@@ -17,8 +17,12 @@ public class HintAspect {
     public Object around(ProceedingJoinPoint joinPoint, Master master) throws Throwable {
         //日志
         Signature signature = joinPoint.getSignature();
-        signature.toLongString();
-        signature.toString();
+
+        //public study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseEO study.sharding.springboot.shardingjdbc.service.UserServiceImpl.get(java.lang.Long)
+        String longStr = signature.toLongString();
+        String str = signature.toString();
+        log.info("111111{}", longStr);
+        log.info("222222{}", str);
 
         String shortName = signature.toShortString();
         try {
