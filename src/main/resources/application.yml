@@ -10,9 +10,9 @@ spring:
     banner-mode: off
   #
   profiles:
-#    active: master-slave
+    active: master-slave
 #    active: sharding-table
-    active: sharding-strategy-standard
+#    active: sharding-strategy-standard
 #    active: sharding-strategy-complex
 #    active: sharding-db
 #    active: sharding-db-table
