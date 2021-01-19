@@ -3,12 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="study.sharding.springboot.shardingjdbc.dao.useradmin.UserAdminMapper">
     <resultMap id="Base_Result_Map" type="study.sharding.springboot.shardingjdbc.dao.orderbase.OrderBaseEO">
-        <result property="rbId" column="ua_id"/>
-        <result property="rbOrderNo" column="ua_ub_id"/>
+        <result property="rbId" column="rb_id"/>
+        <result property="rbOrderNo" column="rb_order_no"/>
     </resultMap>
     <sql id="Base_Column_List">
-        ua.ua_id,
-        ua.ua_ub_id,
-        ua.ua_user_id
+        rb.rb_id,
+        rb.rb_order_no
     </sql>
 </mapper>
