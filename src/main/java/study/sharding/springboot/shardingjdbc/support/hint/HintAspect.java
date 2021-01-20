@@ -1,6 +1,5 @@
 package study.sharding.springboot.shardingjdbc.support.hint;
 
-import com.google.common.base.Stopwatch;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -18,10 +17,13 @@ public class HintAspect {
         //日志
         Signature signature = joinPoint.getSignature();
 
-        //public study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseEO study.sharding.springboot.shardingjdbc.service.UserServiceImpl.get(java.lang.Long)
+        //public
+        //study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseEO
+        //study.sharding.springboot.shardingjdbc.service.UserServiceImpl.get(java.lang.Long)
         String longStr = signature.toLongString();
         String str = signature.toString();
         log.info("111111{}", longStr);
+        //UserServiceImpl.get(java.lang.Long)
         log.info("222222{}", str);
 
         String shortName = signature.toShortString();
