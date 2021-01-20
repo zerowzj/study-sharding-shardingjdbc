@@ -30,13 +30,13 @@ spring:
     masterslave:
       #（※）逻辑数据源名称，为空时不执行读写分离！！！
       name: ds_ms
-      #主数据源
+      #（1）主数据源
       master-data-source-name: ds-master
-      #从数据源
+      #（2）从数据源
       slave-data-source-names:
         - ds-slave0
         - ds-slave1
-      #负载均衡，round_robin/random
+      #（3）负载均衡，round_robin/random
       load-balance-algorithm-type: round_robin
     #（★）属性
     props:
