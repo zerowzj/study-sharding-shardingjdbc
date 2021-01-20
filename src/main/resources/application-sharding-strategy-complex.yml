@@ -4,6 +4,7 @@
 #（2）ComplexShardingStrategy支持多分片键，由于多分片键之间的关系复杂，
 #    因此Sharding-JDBC并未做过多的封装，而是直接将分片键值组合以及分片操作符交于算法接口，
 #    完全由应用开发者实现，提供最大的灵活度
+#
 #********************
 spring:
   shardingsphere:
