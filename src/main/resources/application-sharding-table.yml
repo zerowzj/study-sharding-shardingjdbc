@@ -15,7 +15,7 @@ spring:
     sharding:
       #（▲）表定义
       tables:
-        #（※）命名需要和表名一致！
+        #（※）命名需要和表名一致！！！
         user_base:
           #（1）逻辑表
           logic-table: user_base

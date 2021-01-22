@@ -22,12 +22,12 @@ spring:
         user_base:
           logic-table: user_base
           actual-data-nodes: ds$->{0..1}.user_base_$->{0..1}
-          #（★）数据库策略
+          #（★）分库策略
           database-strategy:
             inline:
               sharding-column: ub_user_id
               algorithm-expression: ds$->{ub_user_id % 2}
-          #（★）表策略
+          #（★）分表策略
           table-strategy:
             inline:
               sharding-column: ub_user_id
