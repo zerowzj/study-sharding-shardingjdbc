@@ -30,11 +30,6 @@ spring:
       #（▲）表绑定
       binding-tables:
         - user_base
-      #（▲）广播表
-      broadcast-tables:
-        - user_base
-        #（▲）广播表
-      master-slave-rules:
     props:
       sql.show: false
       sql.simple: true
