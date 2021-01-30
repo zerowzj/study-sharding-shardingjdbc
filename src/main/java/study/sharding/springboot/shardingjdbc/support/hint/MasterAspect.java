@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @Aspect
-public class HintAspect {
+public class MasterAspect {
 
     @Around("@annotation(master)")
     public Object around(ProceedingJoinPoint joinPoint, Master master) throws Throwable {
@@ -18,7 +18,7 @@ public class HintAspect {
         Signature signature = joinPoint.getSignature();
 
         //public
-        //study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseEO
+        //study.sharding.springboot.shardingjdbc.mapper.userbase.UserBaseEO
         //study.sharding.springboot.shardingjdbc.service.UserServiceImpl.get(java.lang.Long)
         String longStr = signature.toLongString();
         String str = signature.toString();

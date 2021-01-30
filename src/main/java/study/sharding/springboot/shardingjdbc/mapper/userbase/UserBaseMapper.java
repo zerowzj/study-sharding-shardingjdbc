@@ -1,4 +1,4 @@
-package study.sharding.springboot.shardingjdbc.dao.userbase;
+package study.sharding.springboot.shardingjdbc.mapper.userbase;
 
 import study.sharding.springboot.shardingjdbc.support.db.BaseMapper;
 

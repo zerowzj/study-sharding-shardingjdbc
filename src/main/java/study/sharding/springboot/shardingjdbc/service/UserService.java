@@ -1,19 +1,56 @@
 package study.sharding.springboot.shardingjdbc.service;
 
-
-import study.sharding.springboot.shardingjdbc.dao.userbase.UserBaseEO;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import study.sharding.springboot.shardingjdbc.mapper.useradmin.UserAdminEO;
+import study.sharding.springboot.shardingjdbc.mapper.useradmin.UserAdminMapper;
+import study.sharding.springboot.shardingjdbc.mapper.userbase.UserBaseEO;
+import study.sharding.springboot.shardingjdbc.mapper.userbase.UserBaseMapper;
 
 import java.util.Date;
 
-public interface UserService {
+@Slf4j
+@Service("userService")
+public class UserService {
 
-    int add(UserBaseEO ubEO);
+    @Autowired
+    private UserBaseMapper userBaseMapper;
+    @Autowired
+    private UserAdminMapper userAdminMapper;
 
-    UserBaseEO get(Long ubId);
+    @Transactional
+    public void addAdmin(boolean isThrowEx) {
+        UserBaseEO ubEO = new UserBaseEO();
+        ubEO.setUbLoginName("wzj");
+        ubEO.setUbLoginPwd("123123");
+        userBaseMapper.insert(ubEO);
+        if (isThrowEx) {
+            throw new RuntimeException("我是一个异常");
+        }
+        UserAdminEO uaEO = new UserAdminEO();
+        uaEO.setUaId(ubEO.getUbId());
+        userAdminMapper.insert(uaEO);
+    }
 
-    UserBaseEO getByUserId(Long ubUserId);
+//    @Master
+    public UserBaseEO get(Long ubId) {
+//        log.info("{}", datasource.getClass().getName());
+        return userBaseMapper.get(ubId);
+    }
 
-    UserBaseEO getByUserIdAndUbId(Long ubId, Long ubUserId);
+    public UserBaseEO getByUserIdAndUbId(Long ubId, Long ubUserId) {
+        return userBaseMapper.getByUserIdAndUbId(ubId, ubUserId);
+    }
 
-    UserBaseEO getByUserIdAndBeginTime(Long ubUserId, Date ubBeginTime);
+    public UserBaseEO getByUserId(Long ubUserId) {
+        log.info("user_id= {}", ubUserId);
+        return userBaseMapper.getByUserId(ubUserId);
+    }
+
+    public UserBaseEO getByUserIdAndBeginTime(Long ubUserId, Date ubBeginTime) {
+        log.info("user_id= {}", ubUserId);
+        return userBaseMapper.getByUserIdAndBeginTime(ubUserId, ubBeginTime);
+    }
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="study.sharding.springboot.shardingjdbc.mapper.useradmin.UserAdminMapper">
+    <resultMap id="Base_Result_Map" type="UserAdminEO"
+               extends="study.sharding.springboot.shardingjdbc.mapper.userbase.UserBaseMapper.Base_Result_Map">
+        <result property="uaId" column="ua_id"/>
+    </resultMap>
+<!--    <sql id="Base_Column_List">-->
+<!--        ua.ua_id-->
+<!--    </sql>-->
+
+    <insert id="insert" parameterType="UserAdminEO" useGeneratedKeys="true" keyProperty="ubId">
+        insert into user_admin (ua_id)
+        values (#{uaId})
+    </insert>
+</mapper>

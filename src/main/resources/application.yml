@@ -18,5 +18,5 @@ spring:
 #    active: sharding-db-table
 #
 mybatis:
-  mapper-locations: study/sharding/springboot/shardingjdbc/dao/**/**.xml
-  type-aliases-package: study.sharding.springboot.shardingjdbc.dao
+  mapper-locations: study/sharding/springboot/shardingjdbc/mapper/**/**.xml
+  type-aliases-package: study.sharding.springboot.shardingjdbc.mapper

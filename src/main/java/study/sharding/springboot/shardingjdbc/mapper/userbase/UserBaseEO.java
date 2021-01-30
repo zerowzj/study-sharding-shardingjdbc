@@ -1,4 +1,4 @@
-package study.sharding.springboot.shardingjdbc.dao.userbase;
+package study.sharding.springboot.shardingjdbc.mapper.userbase;
 
 import lombok.Getter;
 import lombok.Setter;
