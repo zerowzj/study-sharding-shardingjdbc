@@ -6,9 +6,9 @@
 <!--               extends="study.sharding.springboot.shardingjdbc.mapper.userbase.UserBaseMapper.Base_Result_Map">-->
 <!--        <result property="uaId" column="ua_id"/>-->
 <!--    </resultMap>-->
-<!--    <sql id="Base_Column_List">-->
-<!--        ua.ua_id-->
-<!--    </sql>-->
+    <sql id="Base_Column_List">
+        ua.ua_id
+    </sql>
 
     <insert id="insert" parameterType="UserAdminEO" useGeneratedKeys="true" keyProperty="ubId">
         insert into user_admin (ua_id)
