@@ -23,6 +23,7 @@ public class UserService {
     @Transactional
     public void addAdmin(boolean isThrowEx) {
         UserBaseEO ubEO = new UserBaseEO();
+        ubEO.setUbUserId(90001L);
         ubEO.setUbLoginName("wzj");
         ubEO.setUbLoginPwd("123123");
         userBaseMapper.insert(ubEO);
