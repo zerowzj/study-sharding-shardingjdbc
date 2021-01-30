@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-@EnableTransactionManagement
+//@EnableTransactionManagement
 @Slf4j
 @Configuration
 public class TransactionCfg {

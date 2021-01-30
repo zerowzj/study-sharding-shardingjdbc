@@ -19,11 +19,6 @@ public class MasterSlaveTest {
     private UserService userService;
 
     @Test
-    public void addAdmin_test() {
-        userService.addAdmin(true);
-    }
-
-    @Test
     public void get_test() {
         Long ubId = 3L;
         for (int i = 0; i < 2; i++) {
@@ -38,4 +33,10 @@ public class MasterSlaveTest {
         UserBaseEO ubEO = userService.get(ubId);
         log.info(">>>>> {}", ubEO);
     }
+
+    @Test
+    public void addAdmin_test() {
+        userService.addAdmin(true);
+    }
+
 }
