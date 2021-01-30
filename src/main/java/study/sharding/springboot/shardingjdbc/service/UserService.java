@@ -21,20 +21,6 @@ public class UserService {
     @Autowired
     private UserAdminMapper userAdminMapper;
 
-    @Transactional
-    public void addAdmin(boolean isThrowEx) {
-        UserBaseEO ubEO = new UserBaseEO();
-        ubEO.setUbUserId(90001L);
-        ubEO.setUbLoginName("wzj");
-        ubEO.setUbLoginPwd("123123");
-        userBaseMapper.insert(ubEO);
-        if (isThrowEx) {
-            throw new RuntimeException("我是一个异常");
-        }
-        UserAdminEO uaEO = new UserAdminEO();
-        uaEO.setUaId(ubEO.getUbId());
-        userAdminMapper.insert(uaEO);
-    }
 
     @Master
     public UserBaseEO get(Long ubId) {
@@ -53,5 +39,20 @@ public class UserService {
     public UserBaseEO getByUserIdAndBeginTime(Long ubUserId, Date ubBeginTime) {
         log.info("user_id= {}", ubUserId);
         return userBaseMapper.getByUserIdAndBeginTime(ubUserId, ubBeginTime);
+    }
+
+    @Transactional
+    public void addAdmin(boolean isThrowEx) {
+        UserBaseEO ubEO = new UserBaseEO();
+        ubEO.setUbUserId(90001L);
+        ubEO.setUbLoginName("wzj");
+        ubEO.setUbLoginPwd("123123");
+        userBaseMapper.insert(ubEO);
+        if (isThrowEx) {
+            throw new RuntimeException("我是一个异常");
+        }
+        UserAdminEO uaEO = new UserAdminEO();
+        uaEO.setUaId(ubEO.getUbId());
+        userAdminMapper.insert(uaEO);
     }
 }
