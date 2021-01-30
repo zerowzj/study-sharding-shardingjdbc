@@ -41,6 +41,6 @@ spring:
     #（★）属性
     props:
       #日志内容包含：逻辑 SQL，真实 SQL 和 SQL 解析结果
-      sql.show: true
+      sql.show: false
       #打印简单风格的 SQL
       sql.simple: true

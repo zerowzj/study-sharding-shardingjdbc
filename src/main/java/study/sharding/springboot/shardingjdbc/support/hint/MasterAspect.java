@@ -22,18 +22,18 @@ public class MasterAspect {
         //study.sharding.springboot.shardingjdbc.service.UserServiceImpl.get(java.lang.Long)
         String longStr = signature.toLongString();
         String str = signature.toString();
-        log.info("111111{}", longStr);
         //UserServiceImpl.get(java.lang.Long)
-        log.info("222222{}", str);
 
         String shortName = signature.toShortString();
         try {
-            log.info("[{}] master route", shortName);
+            log.warn("[{}] set master route!", shortName);
             HintManagers.setMasterRouteOnly();
             return joinPoint.proceed();
         } catch (Throwable ex) {
             ex.printStackTrace();
             throw ex;
+        } finally {
+            HintManagers.clear();
         }
     }
 }

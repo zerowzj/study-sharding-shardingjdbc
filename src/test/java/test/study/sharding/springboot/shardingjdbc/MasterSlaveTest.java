@@ -26,7 +26,7 @@ public class MasterSlaveTest {
     @Test
     public void get_test() {
         Long ubId = 3L;
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 2; i++) {
             UserBaseEO ubEO = userService.get(ubId);
             log.info("第 {} 次查询，>>>>> {}", (i + 1), ubEO);
         }

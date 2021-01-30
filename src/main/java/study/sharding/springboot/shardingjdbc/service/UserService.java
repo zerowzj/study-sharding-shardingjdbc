@@ -8,6 +8,7 @@ import study.sharding.springboot.shardingjdbc.mapper.useradmin.UserAdminEO;
 import study.sharding.springboot.shardingjdbc.mapper.useradmin.UserAdminMapper;
 import study.sharding.springboot.shardingjdbc.mapper.userbase.UserBaseEO;
 import study.sharding.springboot.shardingjdbc.mapper.userbase.UserBaseMapper;
+import study.sharding.springboot.shardingjdbc.support.hint.Master;
 
 import java.util.Date;
 
@@ -35,9 +36,8 @@ public class UserService {
         userAdminMapper.insert(uaEO);
     }
 
-//    @Master
+    @Master
     public UserBaseEO get(Long ubId) {
-//        log.info("{}", datasource.getClass().getName());
         return userBaseMapper.get(ubId);
     }
 

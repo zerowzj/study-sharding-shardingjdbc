@@ -8,6 +8,10 @@ public class HintManagers {
         return HintManager.getInstance();
     }
 
+    public static void clear() {
+        HintManager.clear();
+    }
+
     //请求走主库
     public static void setMasterRouteOnly() {
         get().setMasterRouteOnly();
